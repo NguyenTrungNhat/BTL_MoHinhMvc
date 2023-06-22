@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bf5ed51c845543848f98ba02042ce01c" Name="Diagram1">
+        <EntityTypeShape EntityType="BTL_MVCModel.Admin" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTL_MVCModel.CartProduct" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTL_MVCModel.Cart" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTL_MVCModel.Category" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTL_MVCModel.Customer" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTL_MVCModel.OrderProduct" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTL_MVCModel.Order" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTL_MVCModel.Product" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTL_MVCModel.SubCategory" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTL_MVCModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="BTL_MVCModel.FK__CartProdu__Produ__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="BTL_MVCModel.FK__CartProdu__Usern__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="BTL_MVCModel.FK__Carts__Username__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="BTL_MVCModel.FK__Products__Catego__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="BTL_MVCModel.FK__SubCatego__Categ__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="BTL_MVCModel.FK__OrderProd__Order__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="BTL_MVCModel.FK__OrderProd__Produ__46E78A0C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

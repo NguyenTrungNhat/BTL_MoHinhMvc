@@ -1,0 +1,34 @@
+﻿@model BTL_MoHinhMvc.Models.SubCategory
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết loại sản phẩm con</h2>
+
+<div>
+    <hr />
+    <dl class="d-lg-table">
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.SubCategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubCategoryName)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(" ", "Edit", new { id = Model.SubCategoryNumber }, new { @Class = "btn btn-primary fa fa-edit" })
+    @Html.ActionLink(" Hủy", "Index", null, new { @Class = "btn btn-primary fa fa-close" })
+</p>

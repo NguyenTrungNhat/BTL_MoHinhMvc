@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "viewData";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+    <script src="~/Scripts/angular.min.js"></script>
+}
+
+<div class="container-fluid" ng-app="myApp" ng-controller="mycontrol">
+    <h2>Products managerment</h2>
+    <a class="btn btn-danger" href="inputData">Thêm mới</a>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>TT</th>
+                <th>ProductName</th>
+                <th>ProductsImage</th>
+                <th>ProductsPrice</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in datas">
+                <td>{{$index+1}}</td>
+                <td>{{data.Pname}}</td>
+                <td>{{data.Pimage}}</td>
+                <td>{{data.Price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section scripts
+{
+    <script>
+        var myApp = angular.module("myApp", []);
+        myApp.controller("mycontrol", mycontrol);
+        function mycontrol($scope, $http) {
+            //$http.get("/data.json").then(function (res) {
+            //    $scope.datas = res.data.sinhvien;
+            //});
+            $http({
+                url: "/Admin/Products/getAllData",
+                method: "GET"
+            }).then(function (res) {
+                $scope.datas = res.data;
+            });
+        }
+    </script>
+
+}
+

@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "viewData";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="container" ng-app="myApp" ng-controller="myctrl">
+        <h2>ProductCategories managerment</h2>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>TT</th>
+                    <th>CategoryNumber</th>
+                    <th>CategoryName</th>
+                    <th>CategoryLevel</th>
+                    <th>ParentID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="sv in datas">
+                    <td>{{$index+1}}</td>
+                    <td>{{sv.CategoryNumber}}</td>
+                    <td>{{sv.CategoryName}}</td>
+                    <td>{{sv.CategoryLevel}}</td>
+                    <td>{{sv.ParentID}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+@section Script2{
+    <script src="/Scripts/angular.min.js"></script>
+    <script>
+        var myApp = angular.module("myApp", []);
+        myApp.controller('myctrl', myctrl);
+        function myctrl($scope, $http) {
+            //$http.get("/data.json").then(function (res) {
+            //    $scope.datas = res.data.sinhvien;
+            //});
+            $http.get("/Admin/Categories/getAllData", null).then(function (result) {
+                $scope.datas = result.data;
+                console.log($scope.datas);
+            }, function (error) {
+                alert("Thất bại !");
+            });
+
+        }
+    </script>
+}
+

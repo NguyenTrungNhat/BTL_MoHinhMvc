@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "getData";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+    <script src="~/Scripts/angular.min.js"></script>
+
+}
+
+<div class="container-fluid" ng-app="myApp" ng-controller="mycontrol">
+    <h2>Danh sach sinh vien</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>TT</th>
+                <th>Name</th>
+                <th>Birthday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in datas">
+                <td>{{$index+1}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.birthday}}</td>
+            </tr>
+        </tbody>
+    </table> 
+</div>
+
+@section scripts
+{
+    <script>
+        var myApp = angular.module("myApp", []);
+        myApp.controller("mycontrol", mycontrol);
+        function mycontrol($scope, $http) {
+            //$http.get("/data.json").then(function (res) {
+            //    $scope.datas = res.data.sinhvien;
+            //});
+            $http({
+                url: "/data.json",
+                method: "GET"
+            }).then(function (res) {
+                $scope.datas = res.data.sinhvien;
+            });
+        }
+    </script>
+
+}
+

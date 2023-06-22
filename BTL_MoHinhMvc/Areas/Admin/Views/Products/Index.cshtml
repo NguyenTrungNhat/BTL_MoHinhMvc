@@ -1,0 +1,97 @@
+﻿@model IEnumerable<BTL_MoHinhMvc.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+    int tt = 1;
+}
+
+<h2>Quản lý danh sách sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @Class = "btn btn-primary fa fa-plus" })
+</p>
+<table class="table bg-secondary rounded table-bordered table-striped" id="dataTable">
+    <thead>
+
+        <tr>
+            <th>
+                TT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pimage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Availablity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(tt++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pname)
+                </td>
+                <td>
+                    @if (item.Pimage != null)
+                    {
+                        <img src="~/FileUpload/@item.Pimage" style="width: 150px" />
+                    }
+                    else
+                    {
+                        <img src="~/FileUpload/noimg.jpg" style="width: 150px" />
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @if (item.Availablity == 1)
+                    {
+                        <i class="fa fa-check-circle" style="font-size: 32px; color:blue"></i>
+                    }
+                    else
+                    {
+                        <i class="fa fa-close" style="font-size: 32px; color:blue;"></i>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.ProductNumber }, new { @Class = "btn btn-warning fa fa-pencil" })
+                    @Html.ActionLink(" ", "Details", new { id = item.ProductNumber }, new { @Class = "btn btn-info fa fa-info" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.ProductNumber }, new { @Class = "btn btn-danger fa fa-trash" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+
+@section Script1{
+
+    <!-- Page level plugins -->
+    <script src="/Assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/Assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/Assets/jstb/demo/datatables-demo.js"></script>
+}

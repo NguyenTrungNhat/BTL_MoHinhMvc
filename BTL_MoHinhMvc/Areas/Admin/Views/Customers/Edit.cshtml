@@ -1,0 +1,77 @@
+﻿@model BTL_MoHinhMvc.Models.Customer
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Chỉnh sửa thông tin khách hàng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Username)
+
+        <div class="form-group" class="form-group" Style="margin-bottom: 25px;">
+            @Html.LabelFor(model => model.Cname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" Style="margin-top: 10px;">
+                @Html.EditorFor(model => model.Cname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" class="form-group" Style="margin-bottom: 25px;">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" Style="margin-top: 10px;">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" class="form-group" Style="margin-bottom: 25px;">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" Style="margin-top: 10px;">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" class="form-group" Style="margin-bottom: 25px;">
+            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" Style="margin-top: 10px;">
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" class="form-group" Style="margin-bottom: 25px;">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" Style="margin-top: 10px;">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" class="form-group" Style="margin-bottom: 25px;">
+            @Html.LabelFor(model => model.PostCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PostCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" class="form-group" Style="margin-bottom: 25px;">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary fa fa-save"> Lưu</button>
+                @Html.ActionLink(" Hủy", "Index", null, new { @Class = "btn btn-primary fa fa-close" })
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+</div>

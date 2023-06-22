@@ -1,0 +1,42 @@
+﻿@model BTL_MoHinhMvc.Models.OrderProduct
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết sản phẩm trong đơn hàng</h2>
+
+<div>
+    <hr />
+    <dl class="d-lg-table">
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.Order.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.Username)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.Product.Pname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Pname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(" ", "Edit", new { id = Model.OrderNumber }, new { @Class = "btn btn-primary fa fa-edit" })
+    @Html.ActionLink(" Hủy", "Index", null, new { @Class = "btn btn-primary fa fa-close" })
+</p>

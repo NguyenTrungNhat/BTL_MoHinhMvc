@@ -1,0 +1,92 @@
+﻿@model IEnumerable<BTL_MoHinhMvc.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+    int tt = 1;
+}
+
+<h2>Quản lý danh sách khách hàng</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @Class = "btn btn-primary fa fa-plus" })
+</p>
+<table class="table bg-secondary rounded table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                TT
+            </th>
+            <th>
+                Tên tài khoản
+            </th>
+            <th>
+                Tên khách hàng
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Password
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Postcode
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(tt++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostCode)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Username }, new { @Class = "btn btn-warning fa fa-pencil" })
+                    @Html.ActionLink(" ", "Details", new { id = item.Username }, new { @Class = "btn btn-info fa fa-info" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.Username }, new { @Class = "btn btn-danger fa fa-trash" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section Script1{
+
+    <!-- Page level plugins -->
+    <script src="/Assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/Assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/Assets/jstb/demo/datatables-demo.js"></script>
+}

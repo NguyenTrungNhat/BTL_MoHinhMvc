@@ -1,0 +1,99 @@
+﻿@model List<BTL_MoHinhMvc.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section jsFooter {
+    <script src="/Scripts/controller/cartController.js?v=3.4.1"></script>
+}
+
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Giỏ hàng</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!--Shopping Cart Area Strat-->
+<div class="Shopping-cart-area pt-60 pb-60">
+    <div class="container">
+        @if (Model.Count > 0)
+        {
+            <div class="row">
+                <div class="col-12">
+                    <form action="#">
+                        <div class="table-content table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="li-product-remove">remove</th>
+                                        <th class="li-product-thumbnail">images</th>
+                                        <th class="cart-product-name">Product</th>
+                                        <th class="li-product-price">Unit Price</th>
+                                        <th class="li-product-quantity">Quantity</th>
+                                        <th class="li-product-subtotal">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="li-product-remove-class" data-id="@item.Product.ProductNumber"><a href="~/Cart/Index"><i class="fa fa-times"></i></a></td>
+                                            <td class="li-product-thumbnail"><a href="#"><img src="~/FileUpload/@item.Product.Pimage" width="100" alt="Li's Product Image"></a></td>
+                                            <td class="li-product-name"><a href="#">@item.Product.Pname</a></td>
+                                            <td class="li-product-price"><span class="amount">@item.Product.Price.ToString("N0")</span></td>
+                                            <td class="quantity">
+                                                <label>Quantity</label>
+                                                <div class="cart-plus-minus">
+                                                    <input class="cart-plus-minus-box" data-id="@item.Product.ProductNumber" value="@item.Quantity" type="text">
+                                                    <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                                    <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                </div>
+                                            </td>
+                                            <td class="product-subtotal"><span class="amount">@((item.Product.Price * item.Quantity))</span></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="coupon-all">
+                                    <div class="coupon">
+                                        <a href="~/Home/Shop" id="btnContinue" class="btn">Tiếp tục mua hàng</a>
+                                        <a href="~/Cart/Index" id="btnDeleteAll" class="btn">Xóa giỏ hàng</a>
+                                    </div>
+                                    <div class="coupon2">
+                                        <a href="~/Cart/Index" id="btnUpdate" class="btn">Cập nhật giỏ hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 ml-auto">
+                                <div class="cart-page-total">
+                                    <h2>Cart totals</h2>
+                                    <ul>
+                                        <li id="Cart-total">Total <span id="Cart-total-span">$130.00</span></li>
+                                    </ul>
+                                    <a href="~/Cart/Payment" id="btnPayment" class="btn">Thanh toán</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+        else
+        {
+            <span class="alert alert-danger">Chưa có sản phẩm nào trong giỏ hàng</span>
+        }
+    </div>
+</div>
+<!--Shopping Cart Area End-->
+<!-- Begin Footer Area -->

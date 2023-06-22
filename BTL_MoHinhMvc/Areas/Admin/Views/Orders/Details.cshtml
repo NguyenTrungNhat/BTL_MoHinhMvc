@@ -1,0 +1,58 @@
+﻿@model BTL_MoHinhMvc.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<div>
+    <hr />
+    <dl class="d-lg-table">
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.Customer.Cname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Cname)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.OrderState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderState)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.Discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(" ", "Edit", new { id = Model.OrderNumber }, new { @Class = "btn btn-primary fa fa-edit" })
+    @Html.ActionLink(" Hủy", "Index", null, new { @Class = "btn btn-primary fa fa-close" })
+</p>

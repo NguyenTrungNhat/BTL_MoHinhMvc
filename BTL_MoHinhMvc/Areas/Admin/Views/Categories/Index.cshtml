@@ -1,0 +1,93 @@
+﻿@model IEnumerable<BTL_MoHinhMvc.Models.Category>
+
+@{
+    ViewBag.Title = "Loại sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+    int tt = 1;
+}
+
+<div class="container" ng-app="myApp" ng-controller="myctrl">
+    <h2>Quản lý loại sản phẩm</h2>
+    <p>
+        @Html.ActionLink("Thêm mới", "Create", null, new { @Class = "btn btn-primary fa fa-plus" })
+    </p>
+    <table class="table bg-secondary rounded table-bordered table-striped" id="dataTable">
+        <thead>
+            <tr>
+                <th>TT</th>
+                <th>CategoryName</th>
+                <th>CategoryLevel</th>
+                <th>ParentID</th>
+            </tr>
+        </thead>
+
+        @*<tbody>
+            <tr ng-repeat="sv in datas">
+                <td>{{$index+1}}</td>
+                <td>{{sv.CategoryNumber}}</td>
+                <td>{{sv.CategoryName}}</td>
+                <td>{{sv.CategoryLevel}}</td>
+                <td>{{sv.ParentID}}</td>
+            </tr>
+        </tbody>*@
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @(tt++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParentID)
+                </td>
+                <td align="center">
+                    @Html.ActionLink(" ", "Edit", new { id = item.CategoryNumber }, new { @Class = "btn btn-warning fa fa-pencil" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.CategoryNumber }, new { @Class = "btn btn-info fa fa-info" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.CategoryNumber }, new { @Class = "btn btn-danger fa fa-trash" })
+                </td>
+            </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+@section Script1{
+    <!-- Page level plugins -->
+    <script src="/Assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/Assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/Assets/jstb/demo/datatables-demo.js"></script>
+}
+
+@section Script2{
+    <script src="/Scripts/angular.min.js"></script>
+    <script>
+        var myApp = angular.module("myApp", []);
+        myApp.controller('myctrl', myctrl);
+        function myctrl($scope, $http) {
+            //$http.get("/data.json").then(function (res) {
+            //    $scope.datas = res.data.sinhvien;
+            //});
+            $scope.datas = [];
+
+            $http.get("/Admin/Categories/getAllData", null).then(function (result) {
+                $scope.datas = result.data;
+                console.log($scope.datas);
+            }, function (error) {
+                alert("Thất bại !");
+            });
+        }
+    </script>
+}
+
+
+

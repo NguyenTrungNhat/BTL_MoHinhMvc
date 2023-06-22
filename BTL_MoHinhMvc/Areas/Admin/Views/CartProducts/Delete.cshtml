@@ -1,0 +1,49 @@
+﻿@model BTL_MoHinhMvc.Models.CartProduct
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Xóa thông tin sản phẩm có trong giỏ hàng</h2>
+
+<h3>Bạn có chắc chắn muốn xóa thông tin sản phẩm này</h3>
+<div>
+    <hr />
+    <dl class="d-lg-table">
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.Customer.Cname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Cname)
+        </dd>
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.ProductNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductNumber)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Xóa" class="btn btn-danger" />
+    @Html.ActionLink(" Hủy", "Index", null, new { @Class = "btn btn-primary fa fa-close" })
+</div>
+    }
+</div>

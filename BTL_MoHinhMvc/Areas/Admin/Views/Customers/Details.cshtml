@@ -1,0 +1,76 @@
+﻿@model BTL_MoHinhMvc.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết khách hàng</h2>
+
+<div>
+    <hr />
+    <dl class="d-lg-table">
+
+        <dt style="color: #fff; font-size: 20px;">
+            Tên tài khoản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+        <dt style="color: #fff; font-size: 20px;">
+            Tên khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cname)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            Password
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            Phone
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            Address
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            PostCode
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostCode)
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(" ", "Edit", new { id = Model.Username }, new { @Class = "btn btn-primary fa fa-edit" })
+    @Html.ActionLink(" Hủy", "Index", null, new { @Class = "btn btn-primary fa fa-close" })
+</p>

@@ -1,0 +1,82 @@
+﻿@model BTL_MoHinhMvc.Models.Category
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Create</h2>
+<div class="container-fluid" ng-app="myApp" ng-controller="myctrl">
+    <form ng-submit="addData()">
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <hr />
+            <div class="form-group" Style="margin-bottom: 25px">
+                CategoryName
+                <div class="col-md-10" Style="margin-top: 10px;">
+                    <input type="text" ng-model="category.CategoryName" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group" Style="margin-bottom: 25px">
+                CategoryLevel
+                <div class="col-md-10" Style="margin-top: 10px;">
+                    <input type="text" ng-model="category.CategoryLevel" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group" Style="margin-bottom: 25px">
+                ParentID
+                <div class="col-md-10" Style="margin-top: 10px;">
+                    <input type="text" ng-model="category.ParentID" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group" Style="margin-bottom: 25px">
+                <div class="col-md-offset-2 col-md-10" Style="margin-top: 10px;">
+                    <input type="submit" value=" Thêm mới" class="btn btn-default btn-primary fa fa-plus" />
+                </div>
+            </div>
+        </div>
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </form>
+</div>
+
+@section Script2{
+    <script src="/Scripts/angular.min.js"></script>
+    <script>
+        var myApp = angular.module("myApp", []);
+        myApp.controller('myctrl', function ($scope, $http, $httpParamSerializerJQLike) {
+            $scope.category = {};
+            $scope.addData = function () {
+                Token = angular.element('input[name="__RequestVerificationToken"]').attr('value');
+                $scope.category.__RequestVerificationToken = Token;
+                dataRequest = $scope.category;
+                console.log(dataRequest);
+                $http({
+                    method: 'POST',
+                    url: '/Admin/Categories/inputData',
+                    data: $httpParamSerializerJQLike(dataRequest),
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+
+                }).then(function (res) {
+                    if (res.msg == false) {
+                        alert("Loi them ban ghi");
+                    }
+                    else {
+                        alert("Them ban ghi thanh cong");
+                        window.location.href = "/Admin/Categories/viewData";
+                    }
+                });
+            };
+        });
+
+    </script>
+}
+
+
+
+

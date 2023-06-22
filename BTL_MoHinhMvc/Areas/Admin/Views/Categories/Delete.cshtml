@@ -1,0 +1,40 @@
+﻿@model BTL_MoHinhMvc.Models.Category
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Xóa thông tin loại sản phẩm</h2>
+
+<h3>Bạn có chắc chắn muốn xóa thông tin loại sản phẩm này</h3>
+<div>
+    <hr />
+    <dl class="d-lg-table">
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+
+        <dt style="color: #fff; font-size: 20px;">
+            @Html.DisplayNameFor(model => model.CategoryLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryLevel)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Xóa" class="btn btn-danger" />
+    @Html.ActionLink(" Hủy", "Index", null, new { @Class = "btn btn-primary fa fa-close" })
+</div>
+    }
+</div>
